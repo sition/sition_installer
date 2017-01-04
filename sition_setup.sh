@@ -25,9 +25,10 @@ php bin/magento module:enable Semaio_ConfigImportExport
 php bin/magento sampledata:deploy
 php bin/magento setup:static-content:deploy
 php bin/magento setup:static-content:deploy de_DE
-elsels
+
 
 crontab -l > sition_installer/oldcron.txt
+php sition_installer/generate_cron.php
 sleep 5
 crontab sition_installer/newcron.txt
 n98-magerun2 db:import sition_installer/store.sql
@@ -38,4 +39,3 @@ cp  sition_installer/20167103_sition.yaml config/store/base
 php bin/magento config:data:import config/store base
 n98-magerun2 cache:flush
 n98-magerun2 index:reindex
-cd p
