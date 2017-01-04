@@ -6,9 +6,7 @@
 what is installed?
 - Dutch language
 - Dutch tax/vat settings for europe
-- config importer
-- 2nd store: English
-- default content pages for NL
-
-
-
+- Donfig importer, better default settings for use in the netherlands
+- 2nd store view: English
+- Default content pages for NL
+- Default cron jobs
