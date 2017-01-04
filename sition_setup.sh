@@ -1,8 +1,7 @@
 #! /bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-echo  "starten met:  nohup bash setup.sh &"
-echo  "tbv voorkomen timeout!"
-wait 20
+echo  "starting magento 2 dutch configuration"
+wait 3
 cd ../
 clear
 start='date +%s'
@@ -12,7 +11,7 @@ php bin/magento setup:static-content:deploy
 php bin/magento setup:static-content:deploy de_DE
 
 clear
-echo "htaccess aanpassen"
+echo "htaccess modification for safe symlinks"
 
 find . -name ".htaccess" -type f -exec sed -i 's/FollowSymLinks/SymLinksIfOwnerMatch/g' {} ";"
 find . -name ".htaccess" -type f -exec sed -i 's/All -Indexes/ -Indexes/g' {} ";"
@@ -28,7 +27,7 @@ composer update
 
 
 php bin/magento module:enable Ho_nl_NL
-php bin/magento module:enable Semaio_ConfigImportExpor
+php bin/magento module:enable Semaio_ConfigImportExport
 php bin/magento setup:static-content:deploy nl_NL
 php bin/magento setup:upgrade
 php bin/magento setup:di:compile
@@ -36,9 +35,9 @@ php bin/magento setup:di:compile
 clear
 echo "configuratie imprteren excl. domeinnaam" 
 
-n98-magerun2 db:import store.sql
-n98-magerun2 db:import cms.sql
-n98-magerun2 db:import tax.sql
+n98-magerun2 db:import sition_installer/store.sql
+n98-magerun2 db:import sition_installer/cms.sql
+n98-magerun2 db:import sition_installer/tax.sql
 
 mkdir -p config/store/base
 cp  sition_installer/20167103_sition.yaml config/store/base
