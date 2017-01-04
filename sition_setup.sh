@@ -10,7 +10,7 @@ find ./var -type d -exec chmod 777 {} \;  // 777 permission for var folder
 
 #find ./pub/media -type d -exec chmod 777 {} \;
 find ./pub/static -type d -exec chmod 777 {} \;
-#chmod 777 ./app/etc
+#chmod 777 ./app/etcnano
 #chmod 644 ./app/etc/*.xml
 
 find . -name ".htaccess" -type f -exec sed -i 's/FollowSymLinks/SymLinksIfOwnerMatch/g' {} ";"
