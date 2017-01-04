@@ -30,6 +30,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `tax_calculation`
 --
 
+INSERT INTO `customer_group` (`customer_group_id`, `customer_group_code`, `tax_class_id`) VALUES
+(4, 'BTW plichtig', 7),
+(5, 'Niet BTW plichtig', 8);
+
 
 DROP TABLE IF EXISTS `tax_calculation`;
 CREATE TABLE IF NOT EXISTS `tax_calculation` (
@@ -505,31 +509,9 @@ INSERT INTO `tax_calculation_rule` (`tax_calculation_rule_id`, `code`, `priority
 (3, 'Laag', 0, 0, 0),
 (4, 'Geen', 0, 0, 0);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `tax_class`
---
-
-DROP TABLE IF EXISTS `tax_class`;
-CREATE TABLE IF NOT EXISTS `tax_class` (
-  `class_id` smallint(6) NOT NULL COMMENT 'Class Id',
-  `class_name` varchar(255) NOT NULL COMMENT 'Class Name',
-  `class_type` varchar(8) NOT NULL DEFAULT 'CUSTOMER' COMMENT 'Class Type'
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Tax Class';
-
---
--- Truncate table before insert `tax_class`
---
-
-TRUNCATE TABLE `tax_class`;
---
--- Dumping data for table `tax_class`
---
 
 INSERT INTO `tax_class` (`class_id`, `class_name`, `class_type`) VALUES
-(2, 'Taxable Goods', 'PRODUCT'),
-(3, 'Retail Customer', 'CUSTOMER'),
 (4, 'Geen', 'PRODUCT'),
 (5, 'Hoog', 'PRODUCT'),
 (6, 'Laag', 'PRODUCT'),

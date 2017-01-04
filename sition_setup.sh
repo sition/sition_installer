@@ -47,10 +47,9 @@ clear
 echo "configuratie import excl. domainname"
 echo " "
 
-
-# n98-magerun2 db:import sition_installer/store.sql
-# n98-magerun2 db:import sition_installer/cms.sql
-# n98-magerun2 db:import sition_installer/tax.sql
+n98-magerun2 db:import sition_installer/store.sql
+n98-magerun2 db:import sition_installer/cms.sql
+n98-magerun2 db:import sition_installer/tax.sql
 
 mkdir -p config/store/base
 cp  sition_installer/20167103_sition.yaml config/store/base
