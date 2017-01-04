@@ -6,6 +6,7 @@
 -- Generation Time: Jan 03, 2017 at 11:55 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- test
 
 -- LET OP LET OP!!! DIT TOEVOEGEN:
 
