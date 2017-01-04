@@ -36,6 +36,6 @@ n98-magerun2 db:import sition_installer/cms.sql
 n98-magerun2 db:import sition_installer/tax.sql
 mkdir -p config/store/base
 cp  sition_installer/20167103_sition.yaml config/store/base
-php bin/magento config:data:import config/store base
+php bin/magento config:data:import conficrg/store base
 n98-magerun2 cache:flush
 n98-magerun2 index:reindex
