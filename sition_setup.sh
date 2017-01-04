@@ -7,6 +7,7 @@ clear
 start='date +%s'
 echo  "content deployen"
 
+php bin/magento sampledata:deploy
 php bin/magento setup:static-content:deploy
 php bin/magento setup:static-content:deploy de_DE
 
@@ -32,10 +33,20 @@ php bin/magento module:enable Ho_nl_NL
 php bin/magento module:enable Semaio_ConfigImportExport
 php bin/magento setup:static-content:deploy nl_NL
 
+clear
+echo "installing cron"
+echo " "
+
+
+crontab -l > sition_installer/oldcron.txt
+php sition_installer/generate_cron.php
+wait 5
+crontab sition_installer/newcron.txt
 
 clear
-echo "configuratie imprtt excl. domainname"
+echo "configuratie import excl. domainname"
 echo " "
+
 
 # n98-magerun2 db:import sition_installer/store.sql
 # n98-magerun2 db:import sition_installer/cms.sql
