@@ -4,10 +4,9 @@ cd "$(dirname "$0")"
 echo  "starting magento 2 dutch configuration"
 sleep 3
 cd ../
-#find . -type f -exec chmod 644 {} \;      // 644 permission for files
-#find . -type d -exec chmod 755 {} \;      // 755 permission for directory
-find ./var -type d -exec chmod 777 {} \;  // 777 permission for var folder
-
+#find . -type f -exec chmod 644 {} \;
+#find . -type d -exec chmod 755 {} \;
+find ./var -type d -exec chmod 777 {} \;
 #find ./pub/media -type d -exec chmod 777 {} \;
 find ./pub/static -type d -exec chmod 777 {} \;
 #chmod 777 ./app/etcnano
