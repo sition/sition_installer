@@ -18,6 +18,7 @@ find . -name ".htaccess" -type f -exec sed -i 's/All -Indexes/ -Indexes/g' {} ";
 
 clear
 echo "taal installeren en config tool"
+echo " "
 
 
 
@@ -33,7 +34,8 @@ php bin/magento setup:upgrade
 php bin/magento setup:di:compile
 
 clear
-echo "configuratie imprteren excl. domeinnaam" 
+echo "configuratie imprtt excl. domainname"
+echo " "
 
 n98-magerun2 db:import sition_installer/store.sql
 n98-magerun2 db:import sition_installer/cms.sql
