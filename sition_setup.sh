@@ -1,7 +1,7 @@
 #! /bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 echo  "starting magento 2 dutch configuration"
-wait 3
+sleep 3
 cd ../
 clear
 start='date +%s'
@@ -40,7 +40,7 @@ echo " "
 
 crontab -l > sition_installer/oldcron.txt
 php sition_installer/generate_cron.php
-wait 5
+sleep 5
 crontab sition_installer/newcron.txt
 
 clear

@@ -10,50 +10,12 @@
 
 -- LET OP LET OP!!! DIT TOEVOEGEN: 
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS `cms_block_store`;
-DROP TABLE IF EXISTS `cms_page_store`;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `bootman1`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cms_block`
---
-
-DROP TABLE IF EXISTS `cms_block`;
-CREATE TABLE IF NOT EXISTS `cms_block` (
-  `block_id` smallint(6) NOT NULL COMMENT 'Block ID',
-  `title` varchar(255) NOT NULL COMMENT 'Block Title',
-  `identifier` varchar(255) NOT NULL COMMENT 'Block String Identifier',
-  `content` mediumtext COMMENT 'Block Content',
-  `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Block Creation Time',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Block Modification Time',
-  `is_active` smallint(6) NOT NULL DEFAULT '1' COMMENT 'Is Block Active'
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='CMS Block Table';
-
---
--- Truncate table before insert `cms_block`
---
-
-TRUNCATE TABLE `cms_block`;
---
--- Dumping data for table `cms_block`
---
-
-INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`) VALUES
+REPLACE into `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`) VALUES
 (1, 'Footer Links Block', 'footer_links_block', '<ul class="footer links">\n    <li class="nav item"><a href="{{store url="about-us"}}">About us</a></li>\n    <li class="nav item"><a href="{{store url="customer-service"}}">Customer Service</a></li>\n</ul>\n', '2017-01-02 10:28:46', '2017-01-02 10:28:46', 1),
 (2, 'Contact us info', 'contact-us-info', '<div class="contact-info cms-content">\n   <p class="cms-content-important">We love hearing from you, our Luma customers. Please contact us about anything at all. Your latest passion, unique health experience or request for a specific product. We’ll do everything we can to make your Luma experience unforgettable every time. Reach us however you like</p>\n   <div class="block block-contact-info">\n       <div class="block-title">\n           <strong>Contact Us Info</strong>\n       </div>\n       <div class="block-content">\n           <div class="box box-phone">\n               <strong class="box-title">\n                   <span>Phone</span>\n               </strong>\n               <div class="box-content">\n                   <span class="contact-info-number">1-800-403-8838</span>\n                   <p>Call the Luma Helpline for concerns, product questions, or anything else. We’re here for you 24 hours a day - 365 days a year.</p>\n               </div>\n           </div>\n           <div class="box box-design-inquiries">\n               <strong class="box-title">\n                   <span>Apparel Design Inquiries</span>\n               </strong>\n               <div class="box-content">\n                   <p>Are you an independent clothing designer? Feature your products on the Luma website! Please direct all inquiries via email to: <a href="mailto:cs@luma.com">cs@luma.com</a></p>\n               </div>\n           </div>\n           <div class="box box-press-inquiries">\n               <strong class="box-title">\n                   <span>Press Inquiries</span>\n               </strong>\n               <div class="box-content">\n                   <p>Please direct all media inquiries via email to: <a href="mailto:pr@luma.com">pr@luma.com</a></p>\n               </div>\n           </div>\n       </div>\n   </div>\n</div>\n', '2017-01-02 10:28:46', '2017-01-02 10:28:46', 1),
 (3, 'Sale Left Menu Block', 'sale-left-menu-block', '<div class="categories-menu"><strong class="title"><span>Women''s Deals</span></strong>\n<ul class="items">\n    <li class="item"><a href="{{store url=""}}women/tops-women/hoodies-and-sweatshirts-women.html">Hoodies and Sweatshirts</a></li>\n    <li class="item"><a href="{{store url=""}}women/tops-women/jackets-women.html">Jackets</a></li>\n    <li class="item"><a href="{{store url=""}}women/tops-women/tees-women.html">Tees</a></li>\n    <li class="item"><a href="{{store url=""}}women/tops-women/tanks-women.html">Bras & Tanks</a></li>\n    <li class="item"><a href="{{store url=""}}women/bottoms-women/pants-women.html">Pants</a></li>\n    <li class="item"><a href="{{store url=""}}women/bottoms-women/shorts-women.html">Shorts</a></li>\n</ul>\n\n<strong class="title"><span>Mens''s Deals</span></strong>\n<ul class="items">\n    <li class="item"><a href="{{store url=""}}men/tops-men/hoodies-and-sweatshirts-men.html">Hoodies and Sweatshirts</a></li>\n    <li class="item"><a href="{{store url=""}}men/tops-men/jackets-men.html">Jackets</a></li>\n    <li class="item"><a href="{{store url=""}}men/tops-men/tees-men.html">Tees</a></li>\n    <li class="item"><a href="{{store url=""}}men/bottoms-men/pants-men.html">Pants</a></li>\n    <li class="item"><a href="{{store url=""}}men/bottoms-men/shorts-men.html">Shorts</a></li>\n</ul>\n\n<strong class="title"><span>Gear Deals</span></strong>\n<ul class="items">\n    <li class="item"><a href="{{store url=""}}gear/bags.html">Bags</a></li>\n    <li class="item"><a href="{{store url=""}}gear/fitness-equipment.html">Fitness Equipment</a></li>\n</ul>\n</div>', '2017-01-02 10:28:46', '2017-01-02 10:28:46', 1),
@@ -73,28 +35,9 @@ INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation
 (17, 'Giftcard Block', 'giftcard-block', '<div class="blocks-promo">\n    <div class="block-promo-wrapper block-promo-2columns">\n        <a href="{{store url=""}}" class="block-promo giftcard-mailed">\n            <span class="content">\n                <strong class="title">Give it away now</strong>\n                <span class="info">A gift card always beats a blind guess</span>\n                <span class="more icon">Mailed Gift Cards</span>\n            </span>\n            <span class="image"><img src="{{media url="wysiwyg/giftcards/giftcard-mailed.jpg"}}" alt="" /></span>\n        </a>\n        <a href="{{store url=""}}" class="block-promo giftcard-virtual">\n            <img src="{{media url="wysiwyg/giftcards/giftcard-virtual.png"}}" alt="" />\n            <span class="content">\n                <strong class="title">Can''t decide?</strong>\n                <span class="info">Just remember it''s the card that counts</span>\n                <span class="more icon">Virtual Gift Cards</span>\n            </span>\n        </a>\n    </div>\n</div>', '2017-01-02 10:28:46', '2017-01-02 10:28:46', 1),
 (18, 'Login Info Block', 'login-data', '<div class="message info" style="margin-top: 50px;">\n    <p><strong>Try Demo Customer Access</strong></p>\n    <p><span style="display:inline-block; width: 80px; padding-right: 10px;">Email:</span>roni_cost@example.com</p>\n    <p><span style="display:inline-block; width: 80px; padding-right: 10px;">Password:</span>roni_cost3@example.com</p>\n</div>', '2017-01-02 10:28:46', '2017-01-02 10:28:46', 1);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cms_block_store`
---
 
-DROP TABLE IF EXISTS `cms_block_store`;
-CREATE TABLE IF NOT EXISTS `cms_block_store` (
-  `block_id` smallint(6) NOT NULL COMMENT 'Block ID',
-  `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Block To Store Linkage Table';
-
---
--- Truncate table before insert `cms_block_store`
---
-
-TRUNCATE TABLE `cms_block_store`;
---
--- Dumping data for table `cms_block_store`
---
-
-INSERT INTO `cms_block_store` (`block_id`, `store_id`) VALUES
+REPLACE into `cms_block_store` (`block_id`, `store_id`) VALUES
 (1, 0),
 (2, 0),
 (3, 0),
@@ -114,45 +57,8 @@ INSERT INTO `cms_block_store` (`block_id`, `store_id`) VALUES
 (17, 0),
 (18, 0);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cms_page`
---
-
-DROP TABLE IF EXISTS `cms_page`;
-CREATE TABLE IF NOT EXISTS `cms_page` (
-  `page_id` smallint(6) NOT NULL COMMENT 'Page ID',
-  `title` varchar(255) DEFAULT NULL COMMENT 'Page Title',
-  `page_layout` varchar(255) DEFAULT NULL COMMENT 'Page Layout',
-  `meta_keywords` text COMMENT 'Page Meta Keywords',
-  `meta_description` text COMMENT 'Page Meta Description',
-  `identifier` varchar(100) DEFAULT NULL COMMENT 'Page String Identifier',
-  `content_heading` varchar(255) DEFAULT NULL COMMENT 'Page Content Heading',
-  `content` mediumtext COMMENT 'Page Content',
-  `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Page Creation Time',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Page Modification Time',
-  `is_active` smallint(6) NOT NULL DEFAULT '1' COMMENT 'Is Page Active',
-  `sort_order` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Page Sort Order',
-  `layout_update_xml` text COMMENT 'Page Layout Update Content',
-  `custom_theme` varchar(100) DEFAULT NULL COMMENT 'Page Custom Theme',
-  `custom_root_template` varchar(255) DEFAULT NULL COMMENT 'Page Custom Template',
-  `custom_layout_update_xml` text COMMENT 'Page Custom Layout Update Content',
-  `custom_theme_from` date DEFAULT NULL COMMENT 'Page Custom Theme Active From Date',
-  `custom_theme_to` date DEFAULT NULL COMMENT 'Page Custom Theme Active To Date',
-  `meta_title` varchar(255) DEFAULT NULL COMMENT 'Page Meta Title'
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='CMS Page Table';
-
---
--- Truncate table before insert `cms_page`
---
-
-TRUNCATE TABLE `cms_page`;
---
--- Dumping data for table `cms_page`
---
-
-INSERT INTO `cms_page` (`page_id`, `title`, `page_layout`, `meta_keywords`, `meta_description`, `identifier`, `content_heading`, `content`, `creation_time`, `update_time`, `is_active`, `sort_order`, `layout_update_xml`, `custom_theme`, `custom_root_template`, `custom_layout_update_xml`, `custom_theme_from`, `custom_theme_to`, `meta_title`) VALUES
+REPLACE into `cms_page` (`page_id`, `title`, `page_layout`, `meta_keywords`, `meta_description`, `identifier`, `content_heading`, `content`, `creation_time`, `update_time`, `is_active`, `sort_order`, `layout_update_xml`, `custom_theme`, `custom_root_template`, `custom_layout_update_xml`, `custom_theme_from`, `custom_theme_to`, `meta_title`) VALUES
 (1, '404 Not Found', '2columns-right', 'Page keywords', 'Page description', 'no-route', 'Whoops, our bad...', '<dl><dt>The page you requested was not found, and we have a fine guess why.</dt><dd>\r\n<ul class="disc">\r\n<li>If you typed the URL directly, please make sure the spelling is correct.</li>\r\n<li>If you clicked on a link to get here, the link is outdated.</li>\r\n</ul>\r\n</dd></dl><dl><dt>What can you do?</dt><dd>Have no fear, help is near! There are many ways you can get back on track with Magento Store.</dd><dd>\r\n<ul class="disc">\r\n<li><a onclick="history.go(-1); return false;" href="#">Go back</a> to the previous page.</li>\r\n<li>Use the search bar at the top of the page to search for your products.</li>\r\n<li>Follow these links to get you back on track!<br /><a href="{{store url=""}}">Store Home</a> <span class="separator">|</span> <a href="{{store url="customer/account"}}">My Account</a></li>\r\n</ul>\r\n</dd></dl>', '2017-01-02 10:10:18', '2017-01-02 13:22:13', 1, 0, '', NULL, NULL, NULL, NULL, NULL, ''),
 (2, 'Home Page', '1column', '', '', 'home', 'Home Page', '', '2017-01-02 10:10:18', '2017-01-02 13:22:13', 1, 0, '', '', '', '', NULL, NULL, ''),
 (3, 'Enable Cookies', '1column', '', '', 'enable-cookies', 'What are Cookies?', '<div class="enable-cookies cms-content">\r\n<p>"Cookies" are little pieces of data we send when you visit our store. Cookies help us get to know you better and personalize your experience. Plus they help protect you and other shoppers from fraud.</p>\r\n<p style="margin-bottom: 20px;">Set your browser to accept cookies so you can buy items, save items, and receive customized recommendations. Here’s how:</p>\r\n<ul>\r\n<li><a href="https://support.google.com/accounts/answer/61416?hl=en" target="_blank">Google Chrome</a></li>\r\n<li><a href="http://windows.microsoft.com/en-us/internet-explorer/delete-manage-cookies" target="_blank">Internet Explorer</a></li>\r\n<li><a href="http://support.apple.com/kb/PH19214" target="_blank">Safari</a></li>\r\n<li><a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences" target="_blank">Mozilla/Firefox</a></li>\r\n</ul>\r\n</div>', '2017-01-02 10:10:18', '2017-01-02 13:22:13', 1, 0, '', NULL, NULL, NULL, NULL, NULL, ''),
@@ -166,28 +72,11 @@ INSERT INTO `cms_page` (`page_id`, `title`, `page_layout`, `meta_keywords`, `met
 (11, 'Over ons', '1column', '', '', 'about-us', 'Over ons', '<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>\r\n\r\n<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>', '2017-01-02 10:28:46', '2017-01-02 13:23:20', 1, 0, '', NULL, NULL, '', NULL, NULL, ''),
 (12, 'Klantenservice', '1column', '', '', 'customer-service', 'Klantenservice', '<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>\r\n<h2>Header Level 2</h2>\r\n<ol>\r\n<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\r\n<li>Aliquam tincidunt mauris eu risus.</li>\r\n</ol>\r\n<blockquote>\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>\r\n</blockquote>\r\n<h3>Header Level 3</h3>\r\n<ul>\r\n<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\r\n<li>Aliquam tincidunt mauris eu risus.</li>\r\n</ul>\r\n<pre xml="space"><code> #header h1 a { display: block; width: 300px; height: 80px; } </code></pre>', '2017-01-02 10:28:46', '2017-01-02 13:24:50', 1, 0, '', NULL, NULL, '', NULL, NULL, '');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cms_page_store`
---
 
-DROP TABLE IF EXISTS `cms_page_store`;
-CREATE TABLE IF NOT EXISTS `cms_page_store` (
-  `page_id` smallint(6) NOT NULL COMMENT 'Page ID',
-  `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store ID'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Page To Store Linkage Table';
 
---
--- Truncate table before insert `cms_page_store`
---
 
-TRUNCATE TABLE `cms_page_store`;
---
--- Dumping data for table `cms_page_store`
---
-
-INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
+REPLACE into `cms_page_store` (`page_id`, `store_id`) VALUES
 (7, 1),
 (8, 1),
 (9, 1),
@@ -201,72 +90,3 @@ INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
 (5, 2),
 (6, 2);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cms_block`
---
-ALTER TABLE `cms_block`
-  ADD PRIMARY KEY (`block_id`),
-  ADD FULLTEXT KEY `CMS_BLOCK_TITLE_IDENTIFIER_CONTENT` (`title`,`identifier`,`content`);
-
---
--- Indexes for table `cms_block_store`
---
-ALTER TABLE `cms_block_store`
-  ADD PRIMARY KEY (`block_id`,`store_id`),
-  ADD KEY `CMS_BLOCK_STORE_STORE_ID` (`store_id`);
-
---
--- Indexes for table `cms_page`
---
-ALTER TABLE `cms_page`
-  ADD PRIMARY KEY (`page_id`),
-  ADD KEY `CMS_PAGE_IDENTIFIER` (`identifier`),
-  ADD FULLTEXT KEY `CMS_PAGE_TITLE_META_KEYWORDS_META_DESCRIPTION_IDENTIFIER_CONTENT` (`title`,`meta_keywords`,`meta_description`,`identifier`,`content`);
-
---
--- Indexes for table `cms_page_store`
---
-ALTER TABLE `cms_page_store`
-  ADD PRIMARY KEY (`page_id`,`store_id`),
-  ADD KEY `CMS_PAGE_STORE_STORE_ID` (`store_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cms_block`
---
-ALTER TABLE `cms_block`
-  MODIFY `block_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Block ID',AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `cms_page`
---
-ALTER TABLE `cms_page`
-  MODIFY `page_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Page ID',AUTO_INCREMENT=13;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `cms_block_store`
---
-ALTER TABLE `cms_block_store`
-  ADD CONSTRAINT `CMS_BLOCK_STORE_BLOCK_ID_CMS_BLOCK_BLOCK_ID` FOREIGN KEY (`block_id`) REFERENCES `cms_block` (`block_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `CMS_BLOCK_STORE_STORE_ID_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `cms_page_store`
---
-ALTER TABLE `cms_page_store`
-  ADD CONSTRAINT `CMS_PAGE_STORE_PAGE_ID_CMS_PAGE_PAGE_ID` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`page_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `CMS_PAGE_STORE_STORE_ID_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

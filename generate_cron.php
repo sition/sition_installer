@@ -7,8 +7,8 @@
  */
 
 
-$file = 'sition_installer/oldcron.txt';
-$file2 = 'sition_installer/newcron.txt';
+$file = dirname(__FILE__).'/oldcron.txt';
+$file2 = dirname(__FILE__).'/newcron.txt';
 // Open the file to get existing content
 $current = file_get_contents($file);
 $currentwkd = getcwd ( );
@@ -18,5 +18,5 @@ $current .= "*/1 * * * * /usr/bin/php ".$currentwkd."/update/cron.php cron:run >
 $current .= "*/1 * * * * /usr/bin/php".$currentwkd."/bin/magento setup:cron:run >> ".$currentwkd."/var/log/magento_setup.cron.log\n";
 
 // Write the contents back to the file
-file_put_contents($file, $current);
+file_put_contents($file2, $current);
 ?>

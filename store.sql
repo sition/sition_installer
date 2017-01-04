@@ -12,4 +12,4 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 -- INSERT INTO `store` (`store_id`, `code`, `website_id`, `group_id`, `name`, `sort_order`, `is_active`) VALUES (2, 'default_en', 1, 1, 'EN store view', 2, 1);
 UPDATE `store` SET `name` = 'NL Store View' WHERE `store`.`store_id` = 1;
--- INSERT INTO `store` (`store_id`, `code`, `website_id`, `group_id`, `name`, `sort_order`, `is_active`) VALUES (2, 'default_en', 1, 1, 'EN store view', 2, 1);
+REPLACE into `store` (`store_id`, `code`, `website_id`, `group_id`, `name`, `sort_order`, `is_active`) VALUES (2, 'default_en', 1, 1, 'EN store view', 2, 1);
