@@ -1,0 +1,614 @@
+
+#######
+# admin
+#######
+admin/security/password_is_forced:
+  default:
+    0: 0
+admin/security/password_lifetime:
+  default:
+    0: 150
+admin/security/session_lifetime:
+  default:
+    0: 7200
+admin/security/use_case_sensitive_login:
+  default:
+    0: 0
+admin/url/custom_path:
+  default:
+    0: 'mijnbeheer'
+admin/url/use_custom_path:
+  default:
+    0: 1
+
+##########
+# carriers
+##########
+carriers/tablerate/active:
+  default:
+    0: 1
+carriers/tablerate/condition_name:
+  default:
+    0: 'package_value'
+
+#########
+# catalog
+#########
+catalog/category/root_id:
+  default:
+    0: 2
+catalog/custom_options/use_calendar:
+  default:
+    0: 1
+catalog/custom_options/year_range:
+  default:
+    0: '1920,2025'
+catalog/downloadable/content_disposition:
+  default:
+    0: 'inline'
+catalog/downloadable/shareable:
+  default:
+    0: 0
+catalog/frontend/flat_catalog_category:
+  default:
+    0: 1
+catalog/frontend/flat_catalog_product:
+  default:
+    0: 1
+catalog/frontend/list_allow_all:
+  default:
+    0: 0
+catalog/placeholder/image_placeholder:
+  default:
+    0: ''
+catalog/placeholder/small_image_placeholder:
+  default:
+    0: ''
+catalog/placeholder/swatch_image_placeholder:
+  default:
+    0: ''
+catalog/placeholder/thumbnail_placeholder:
+  default:
+    0: ''
+catalog/price/scope:
+  default:
+    0: 0
+catalog/productalert_cron/error_email:
+  default:
+    0: ''
+catalog/productalert_cron/frequency:
+  default:
+    0: 'D'
+catalog/productalert_cron/time:
+  default:
+    0: '00,00,00'
+catalog/product_video/youtube_api_key:
+  default:
+    0: ''
+catalog/review/allow_guest:
+  default:
+    0: 1
+catalog/seo/category_canonical_tag:
+  default:
+    0: 1
+catalog/seo/product_canonical_tag:
+  default:
+    0: 1
+
+##########
+# checkout
+##########
+checkout/options/enable_agreements:
+  default:
+    0: 1
+checkout/payment_failed/copy_method:
+  default:
+    0: 'bcc'
+checkout/payment_failed/copy_to:
+  default:
+    0: ''
+
+#########
+# crontab
+#########
+crontab/default/jobs/catalog_product_alert/run/model:
+  default:
+    0: ''
+crontab/default/jobs/catalog_product_alert/schedule/cron_expr:
+  default:
+    0: '0 0 * * *'
+crontab/default/jobs/currency_rates_update/schedule/cron_expr:
+  default:
+    0: '0 7 * * *'
+crontab/default/jobs/sitemap_generate/run/model:
+  default:
+    0: ''
+crontab/default/jobs/sitemap_generate/schedule/cron_expr:
+  default:
+    0: '0 5 * * *'
+
+##########
+# currency
+##########
+currency/fixerio/timeout:
+  default:
+    0: 100
+currency/import/enabled:
+  default:
+    0: 1
+currency/import/error_email:
+  default:
+    0: ''
+currency/import/frequency:
+  default:
+    0: 'D'
+currency/import/service:
+  default:
+    0: 'fixerio'
+currency/import/time:
+  default:
+    0: '07,00,00'
+currency/options/allow:
+  default:
+    0: 'EUR'
+currency/options/base:
+  default:
+    0: 'EUR'
+currency/options/default:
+  default:
+    0: 'EUR'
+currency/yahoofinance/timeout:
+  default:
+    0: 100
+
+##########
+# customer
+##########
+customer/address/dob_show:
+  default:
+    0: ''
+customer/address/gender_show:
+  default:
+    0: ''
+customer/address/middlename_show:
+  default:
+    0: 0
+customer/address/prefix_options:
+  default:
+    0: ''
+customer/address/prefix_show:
+  default:
+    0: ''
+customer/address/suffix_options:
+  default:
+    0: ''
+customer/address/suffix_show:
+  default:
+    0: ''
+customer/address/taxvat_show:
+  default:
+    0: ''
+customer/address_templates/html:
+  default:
+    0: |
+        {{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}{{depend firstname}}<br/>{{/depend}}
+        {{depend company}}{{var company}}<br />{{/depend}}
+        {{if street1}}{{var street1}}<br />{{/if}}
+        {{depend street2}}{{var street2}}<br />{{/depend}}
+        {{depend street3}}{{var street3}}<br />{{/depend}}
+        {{depend street4}}{{var street4}}<br />{{/depend}}
+        {{if postcode}}{{var postcode}}{{/if}} {{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}<br/>
+        {{var country}}<br/>
+        {{depend telephone}}T: {{var telephone}}{{/depend}}
+        {{depend fax}}<br/>F: {{var fax}}{{/depend}}
+        {{depend vat_id}}<br/>VAT: {{var vat_id}}{{/depend}}
+customer/address_templates/oneline:
+  default:
+    0: '{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}, {{var street}}, {{var postcode}} {{var city}}, {{var region}}, {{var country}}'
+customer/address_templates/pdf:
+  default:
+    0: |
+        {{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}|
+        {{depend company}}{{var company}}|{{/depend}}
+        {{if street1}}{{var street1}}
+        {{/if}}
+        {{depend street2}}{{var street2}}|{{/depend}}
+        {{depend street3}}{{var street3}}|{{/depend}}
+        {{depend street4}}{{var street4}}|{{/depend}}
+        {{if postcode}}{{var postcode}}{{if city}}{{var city}},|{{/if}}
+        {{if region}}{{var region}}, {{/if}}{{/if}}|
+        {{var country}}|
+        {{depend telephone}}T: {{var telephone}}{{/depend}}|
+        {{depend fax}}<br/>F: {{var fax}}{{/depend}}|
+        {{depend vat_id}}<br/>VAT: {{var vat_id}}{{/depend}}|
+customer/address_templates/text:
+  default:
+    0: |
+        {{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}
+        {{depend company}}{{var company}}{{/depend}}
+        {{if street1}}{{var street1}}
+        {{/if}}
+        {{depend street2}}{{var street2}}{{/depend}}
+        {{depend street3}}{{var street3}}{{/depend}}
+        {{depend street4}}{{var street4}}{{/depend}}
+        {{if postcode}}{{var postcode}}{{/if}} {{if city}}{{var city}},  {{/if}}
+        {{if region}}{{var region}}, {{/if}}
+        {{var country}}
+        T: {{var telephone}}
+        {{depend fax}}F: {{var fax}}{{/depend}}
+        {{depend vat_id}}VAT: {{var vat_id}}{{/depend}}
+customer/create_account/auto_group_assign:
+  default:
+    0: 1
+customer/create_account/default_group:
+  default:
+    0: 4
+customer/create_account/generate_human_friendly_id:
+  default:
+    0: 0
+customer/create_account/vat_frontend_visibility:
+  default:
+    0: 1
+customer/create_account/viv_disable_auto_group_assign_default:
+  default:
+    0: 0
+customer/create_account/viv_domestic_group:
+  default:
+    0: 4
+customer/create_account/viv_error_group:
+  default:
+    0: 4
+customer/create_account/viv_intra_union_group:
+  default:
+    0: 5
+customer/create_account/viv_invalid_group:
+  default:
+    0: 4
+customer/create_account/viv_on_each_transaction:
+  default:
+    0: 1
+customer/online_customers/online_minutes_interval:
+  default:
+    0: ''
+
+########
+# design
+########
+design/head/includes:
+  default:
+    0: '<link  rel="stylesheet" type="text/css"  media="all" href="{{MEDIA_URL}}styles.css" />'
+design/theme/theme_id:
+  default:
+    0: 2
+
+#####
+# dev
+#####
+dev/css/merge_css_files:
+  default:
+    0: 0
+dev/css/minify_files:
+  default:
+    0: 0
+dev/debug/template_hints_admin:
+  default:
+    0: 0
+dev/debug/template_hints_blocks:
+  default:
+    0: 0
+dev/debug/template_hints_storefront:
+  default:
+    0: 0
+dev/js/enable_js_bundling:
+  default:
+    0: 0
+dev/js/merge_files:
+  default:
+    0: 0
+dev/js/minify_files:
+  default:
+    0: 0
+dev/restrict/allow_ips:
+  default:
+    0: '185.66.93.142'
+dev/static/sign:
+  default:
+    0: 1
+dev/template/allow_symlink:
+  default:
+    0: 0
+dev/translate_inline/active:
+  default:
+    0: 0
+dev/translate_inline/active_admin:
+  default:
+    0: 0
+
+#########
+# general
+#########
+general/country/allow:
+  default:
+    0: 'BE,NL'
+general/country/default:
+  default:
+    0: 'NL'
+general/locale/code:
+  default:
+    0: 'nl_NL'
+general/locale/timezone:
+  default:
+    0: 'Europe/Amsterdam'
+general/locale/weight_unit:
+  default:
+    0: 'kgs'
+general/region/display_all:
+  default:
+    0: 1
+general/region/state_required:
+  default:
+    0: 'BR,CA,EE,FI,LV,LT,AT,RO,ES,US,CH'
+general/single_store_mode/enabled:
+  default:
+    0: 0
+general/store_information/city:
+  default:
+    0: 'general-general-city'
+general/store_information/country_id:
+  default:
+    0: 'NL'
+general/store_information/hours:
+  default:
+    0: 'general-general-store-hours-of-operation'
+general/store_information/merchant_vat_number:
+  default:
+    0: '851886826B01'
+general/store_information/name:
+  default:
+    0: 'general-general-store-name'
+general/store_information/phone:
+  default:
+    0: 'general-general-store-phone number'
+general/store_information/postcode:
+  default:
+    0: 'general-general-zip-postcode'
+general/store_information/region_id:
+  default:
+    0: 'general-general-region'
+general/store_information/street_line1:
+  default:
+    0: 'general-general-street-address'
+general/store_information/street_line2:
+  default:
+    0: ''
+
+###################
+# newrelicreporting
+###################
+newrelicreporting/general/account_id:
+  default:
+    0: ''
+newrelicreporting/general/api:
+  default:
+    0: ''
+newrelicreporting/general/app_id:
+  default:
+    0: ''
+newrelicreporting/general/app_name:
+  default:
+    0: ''
+newrelicreporting/general/insights_insert_key:
+  default:
+    0: ''
+
+############
+# persistent
+############
+persistent/options/enabled:
+  default:
+    0: 1
+
+#######
+# promo
+#######
+promo/auto_generated_coupon_codes/dash:
+  default:
+    0: 3
+promo/auto_generated_coupon_codes/prefix:
+  default:
+    0: ''
+promo/auto_generated_coupon_codes/suffix:
+  default:
+    0: ''
+
+#######
+# sales
+#######
+sales/general/hide_customer_ip:
+  default:
+    0: 0
+sales/identity/address:
+  default:
+    0: |
+        webwinkel.nl
+        straat 1
+        1234AB Plaatsnaam
+        invullen op sales/invoice/packing slip design 
+sales/identity/logo:
+  default:
+    0: ''
+sales/identity/logo_html:
+  default:
+    0: ''
+sales/minimum_order/active:
+  default:
+    0: 0
+sales/minimum_order/amount:
+  default:
+    0: ''
+sales/minimum_order/description:
+  default:
+    0: ''
+sales/minimum_order/error_message:
+  default:
+    0: ''
+sales/minimum_order/multi_address:
+  default:
+    0: 0
+sales/minimum_order/multi_address_description:
+  default:
+    0: ''
+sales/minimum_order/multi_address_error_message:
+  default:
+    0: ''
+sales/msrp/enabled:
+  default:
+    0: 0
+
+##########
+# shipping
+##########
+shipping/origin/city:
+  default:
+    0: ''
+shipping/origin/country_id:
+  default:
+    0: 'NL'
+shipping/origin/postcode:
+  default:
+    0: 90034
+shipping/origin/region_id:
+  default:
+    0: ''
+shipping/origin/street_line1:
+  default:
+    0: ''
+shipping/origin/street_line2:
+  default:
+    0: ''
+shipping/shipping_policy/enable_shipping_policy:
+  default:
+    0: 0
+shipping/shipping_policy/shipping_policy_content:
+  default:
+    0: ''
+
+#########
+# sitemap
+#########
+sitemap/generate/enabled:
+  default:
+    0: 1
+sitemap/generate/error_email:
+  default:
+    0: ''
+sitemap/generate/frequency:
+  default:
+    0: 'D'
+sitemap/generate/time:
+  default:
+    0: '05,00,00'
+sitemap/search_engines/submission_robots:
+  default:
+    0: 1
+
+#####
+# tax
+#####
+tax/calculation/algorithm:
+  default:
+    0: 'TOTAL_BASE_CALCULATION'
+tax/calculation/apply_tax_on:
+  default:
+    0: 0
+tax/calculation/cross_border_trade_enabled:
+  default:
+    0: 0
+tax/calculation/discount_tax:
+  default:
+    0: 1
+tax/calculation/price_includes_tax:
+  default:
+    0: 1
+tax/calculation/shipping_includes_tax:
+  default:
+    0: 1
+tax/cart_display/full_summary:
+  default:
+    0: 1
+tax/cart_display/grandtotal:
+  default:
+    0: 1
+tax/cart_display/price:
+  default:
+    0: 2
+tax/cart_display/shipping:
+  default:
+    0: 2
+tax/cart_display/subtotal:
+  default:
+    0: 2
+tax/classes/default_customer_tax_class:
+  default:
+    0: 7
+tax/classes/default_product_tax_class:
+  default:
+    0: 5
+tax/classes/shipping_tax_class:
+  default:
+    0: 5
+tax/defaults/country:
+  default:
+    0: 'NL'
+tax/defaults/postcode:
+  default:
+    0: ''
+tax/display/shipping:
+  default:
+    0: 2
+tax/display/type:
+  default:
+    0: 2
+tax/notification/ignore_discount:
+  default:
+    0: 0
+tax/notification/ignore_price_display:
+  default:
+    0: 0
+tax/sales_display/full_summary:
+  default:
+    0: 1
+tax/sales_display/grandtotal:
+  default:
+    0: 1
+tax/sales_display/price:
+  default:
+    0: 2
+tax/sales_display/shipping:
+  default:
+    0: 2
+tax/sales_display/subtotal:
+  default:
+    0: 2
+
+#############
+# trans_email
+#############
+trans_email/ident_general/email:
+  default:
+    0: 'general-store-email-general-contact-email@shopnaam.nl'
+trans_email/ident_general/name:
+  default:
+    0: 'general-store-email-general-contact-name'
+trans_email/ident_sales/email:
+  default:
+    0: 'general-store-email-sales-contact-name@shopnaam.nl'
+trans_email/ident_sales/name:
+  default:
+    0: 'general-store-email-general-sales-contact-name'
+trans_email/ident_support/email:
+  default:
+    0: 'general-store-email-support-contact-email@shopnaam.nl'
+trans_email/ident_support/name:
+  default:
+    0: 'general-store-email-general-support-contact-name'
