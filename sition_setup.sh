@@ -25,21 +25,21 @@ echo " "
 composer require honl/magento2-nl-nl
 composer require semaio/magento2-configimportexport
 composer update
-
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
 
 php bin/magento module:enable Ho_nl_NL
 php bin/magento module:enable Semaio_ConfigImportExport
 php bin/magento setup:static-content:deploy nl_NL
-php bin/magento setup:upgrade
-php bin/magento setup:di:compile
+
 
 clear
 echo "configuratie imprtt excl. domainname"
 echo " "
 
-n98-magerun2 db:import sition_installer/store.sql
-n98-magerun2 db:import sition_installer/cms.sql
-n98-magerun2 db:import sition_installer/tax.sql
+# n98-magerun2 db:import sition_installer/store.sql
+# n98-magerun2 db:import sition_installer/cms.sql
+# n98-magerun2 db:import sition_installer/tax.sql
 
 mkdir -p config/store/base
 cp  sition_installer/20167103_sition.yaml config/store/base
