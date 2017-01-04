@@ -7,53 +7,22 @@
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
--- LET OP LET OP!!! DIT TOEVOEGEN: 
-DROP TABLE IF EXISTS `tax_calculation_rate_title`;
+-- LET OP LET OP!!! DIT TOEVOEGEN:
+
+
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `bootman1`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tax_calculation`
---
-
-INSERT INTO `customer_group` (`customer_group_id`, `customer_group_code`, `tax_class_id`) VALUES
+REPLACE into `customer_group` (`customer_group_id`, `customer_group_code`, `tax_class_id`) VALUES
 (4, 'BTW plichtig', 7),
 (5, 'Niet BTW plichtig', 8);
 
 
-DROP TABLE IF EXISTS `tax_calculation`;
-CREATE TABLE IF NOT EXISTS `tax_calculation` (
-  `tax_calculation_id` int(11) NOT NULL COMMENT 'Tax Calculation Id',
-  `tax_calculation_rate_id` int(11) NOT NULL COMMENT 'Tax Calculation Rate Id',
-  `tax_calculation_rule_id` int(11) NOT NULL COMMENT 'Tax Calculation Rule Id',
-  `customer_tax_class_id` smallint(6) NOT NULL COMMENT 'Customer Tax Class Id',
-  `product_tax_class_id` smallint(6) NOT NULL COMMENT 'Product Tax Class Id'
-) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation';
 
---
--- Truncate table before insert `tax_calculation`
---
-
-TRUNCATE TABLE `tax_calculation`;
---
--- Dumping data for table `tax_calculation`
---
-
-INSERT INTO `tax_calculation` (`tax_calculation_id`, `tax_calculation_rate_id`, `tax_calculation_rule_id`, `customer_tax_class_id`, `product_tax_class_id`) VALUES
+REPLACE into `tax_calculation` (`tax_calculation_id`, `tax_calculation_rate_id`, `tax_calculation_rule_id`, `customer_tax_class_id`, `product_tax_class_id`) VALUES
 (155, 51, 3, 3, 6),
 (156, 52, 3, 3, 6),
 (157, 53, 3, 3, 6),
@@ -296,29 +265,9 @@ INSERT INTO `tax_calculation` (`tax_calculation_id`, `tax_calculation_rate_id`, 
 -- Table structure for table `tax_calculation_rate`
 --
 
-DROP TABLE IF EXISTS `tax_calculation_rate`;
-CREATE TABLE IF NOT EXISTS `tax_calculation_rate` (
-  `tax_calculation_rate_id` int(11) NOT NULL COMMENT 'Tax Calculation Rate Id',
-  `tax_country_id` varchar(2) NOT NULL COMMENT 'Tax Country Id',
-  `tax_region_id` int(11) NOT NULL COMMENT 'Tax Region Id',
-  `tax_postcode` varchar(21) DEFAULT NULL COMMENT 'Tax Postcode',
-  `code` varchar(255) NOT NULL COMMENT 'Code',
-  `rate` decimal(12,4) NOT NULL COMMENT 'Rate',
-  `zip_is_range` smallint(6) DEFAULT NULL COMMENT 'Zip Is Range',
-  `zip_from` int(10) unsigned DEFAULT NULL COMMENT 'Zip From',
-  `zip_to` int(10) unsigned DEFAULT NULL COMMENT 'Zip To'
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rate';
 
---
--- Truncate table before insert `tax_calculation_rate`
---
 
-TRUNCATE TABLE `tax_calculation_rate`;
---
--- Dumping data for table `tax_calculation_rate`
---
-
-INSERT INTO `tax_calculation_rate` (`tax_calculation_rate_id`, `tax_country_id`, `tax_region_id`, `tax_postcode`, `code`, `rate`, `zip_is_range`, `zip_from`, `zip_to`) VALUES
+REPLACE into `tax_calculation_rate` (`tax_calculation_rate_id`, `tax_country_id`, `tax_region_id`, `tax_postcode`, `code`, `rate`, `zip_is_range`, `zip_from`, `zip_to`) VALUES
 (4, 'GB', 0, NULL, 'GB Hoog', '21.0000', NULL, NULL, NULL),
 (5, 'AL', 0, NULL, 'AL Hoog', '21.0000', NULL, NULL, NULL),
 (6, 'AD', 0, NULL, 'AD Hoog', '21.0000', NULL, NULL, NULL),
@@ -461,157 +410,19 @@ INSERT INTO `tax_calculation_rate` (`tax_calculation_rate_id`, `tax_country_id`,
 (143, 'UA', 0, NULL, 'UA Geen', '0.0000', NULL, NULL, NULL),
 (144, 'VA', 0, NULL, 'VA Geen', '0.0000', NULL, NULL, NULL);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `tax_calculation_rate_title`
---
-
-DROP TABLE IF EXISTS `tax_calculation_rate_title`;
-CREATE TABLE IF NOT EXISTS `tax_calculation_rate_title` (
-  `tax_calculation_rate_title_id` int(11) NOT NULL COMMENT 'Tax Calculation Rate Title Id',
-  `tax_calculation_rate_id` int(11) NOT NULL COMMENT 'Tax Calculation Rate Id',
-  `store_id` smallint(5) unsigned NOT NULL COMMENT 'Store Id',
-  `value` varchar(255) NOT NULL COMMENT 'Value'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rate Title';
-
---
--- Truncate table before insert `tax_calculation_rate_title`
---
-
-TRUNCATE TABLE `tax_calculation_rate_title`;
--- --------------------------------------------------------
-
---
--- Table structure for table `tax_calculation_rule`
---
-
-DROP TABLE IF EXISTS `tax_calculation_rule`;
-CREATE TABLE IF NOT EXISTS `tax_calculation_rule` (
-  `tax_calculation_rule_id` int(11) NOT NULL COMMENT 'Tax Calculation Rule Id',
-  `code` varchar(255) NOT NULL COMMENT 'Code',
-  `priority` int(11) NOT NULL COMMENT 'Priority',
-  `position` int(11) NOT NULL COMMENT 'Position',
-  `calculate_subtotal` int(11) NOT NULL COMMENT 'Calculate off subtotal option'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Tax Calculation Rule';
-
---
--- Truncate table before insert `tax_calculation_rule`
---
-
-TRUNCATE TABLE `tax_calculation_rule`;
---
--- Dumping data for table `tax_calculation_rule`
---
-
-INSERT INTO `tax_calculation_rule` (`tax_calculation_rule_id`, `code`, `priority`, `position`, `calculate_subtotal`) VALUES
+REPLACE into `tax_calculation_rule` (`tax_calculation_rule_id`, `code`, `priority`, `position`, `calculate_subtotal`) VALUES
 (2, 'Hoog', 0, 0, 0),
 (3, 'Laag', 0, 0, 0),
-(4, 'Geen', 0, 0, 0);
+(4, 'Geen', 0, 0, 0) ;
 
 
 
-INSERT INTO `tax_class` (`class_id`, `class_name`, `class_type`) VALUES
+REPLACE into `tax_class` (`class_id`, `class_name`, `class_type`) VALUES
+(2, 'Taxable Goods', 'PRODUCT'),
+(3, 'Retail Customer', 'CUSTOMER'),
 (4, 'Geen', 'PRODUCT'),
 (5, 'Hoog', 'PRODUCT'),
 (6, 'Laag', 'PRODUCT'),
 (7, 'BTW plichtig', 'CUSTOMER'),
 (8, 'Niet BTW plichtig', 'CUSTOMER');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tax_calculation`
---
-ALTER TABLE `tax_calculation`
-  ADD PRIMARY KEY (`tax_calculation_id`),
-  ADD KEY `TAX_CALCULATION_TAX_CALCULATION_RULE_ID` (`tax_calculation_rule_id`),
-  ADD KEY `TAX_CALCULATION_CUSTOMER_TAX_CLASS_ID` (`customer_tax_class_id`),
-  ADD KEY `TAX_CALCULATION_PRODUCT_TAX_CLASS_ID` (`product_tax_class_id`),
-  ADD KEY `TAX_CALC_TAX_CALC_RATE_ID_CSTR_TAX_CLASS_ID_PRD_TAX_CLASS_ID` (`tax_calculation_rate_id`,`customer_tax_class_id`,`product_tax_class_id`);
-
---
--- Indexes for table `tax_calculation_rate`
---
-ALTER TABLE `tax_calculation_rate`
-  ADD PRIMARY KEY (`tax_calculation_rate_id`),
-  ADD KEY `TAX_CALCULATION_RATE_TAX_COUNTRY_ID_TAX_REGION_ID_TAX_POSTCODE` (`tax_country_id`,`tax_region_id`,`tax_postcode`),
-  ADD KEY `TAX_CALCULATION_RATE_CODE` (`code`),
-  ADD KEY `IDX_CA799F1E2CB843495F601E56C84A626D` (`tax_calculation_rate_id`,`tax_country_id`,`tax_region_id`,`zip_is_range`,`tax_postcode`);
-
---
--- Indexes for table `tax_calculation_rate_title`
---
-ALTER TABLE `tax_calculation_rate_title`
-  ADD PRIMARY KEY (`tax_calculation_rate_title_id`),
-  ADD KEY `TAX_CALCULATION_RATE_TITLE_TAX_CALCULATION_RATE_ID_STORE_ID` (`tax_calculation_rate_id`,`store_id`),
-  ADD KEY `TAX_CALCULATION_RATE_TITLE_STORE_ID` (`store_id`);
-
---
--- Indexes for table `tax_calculation_rule`
---
-ALTER TABLE `tax_calculation_rule`
-  ADD PRIMARY KEY (`tax_calculation_rule_id`),
-  ADD KEY `TAX_CALCULATION_RULE_PRIORITY_POSITION` (`priority`,`position`),
-  ADD KEY `TAX_CALCULATION_RULE_CODE` (`code`);
-
---
--- Indexes for table `tax_class`
---
-ALTER TABLE `tax_class`
-  ADD PRIMARY KEY (`class_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tax_calculation`
---
-ALTER TABLE `tax_calculation`
-  MODIFY `tax_calculation_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Tax Calculation Id',AUTO_INCREMENT=390;
---
--- AUTO_INCREMENT for table `tax_calculation_rate`
---
-ALTER TABLE `tax_calculation_rate`
-  MODIFY `tax_calculation_rate_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Tax Calculation Rate Id',AUTO_INCREMENT=145;
---
--- AUTO_INCREMENT for table `tax_calculation_rate_title`
---
-ALTER TABLE `tax_calculation_rate_title`
-  MODIFY `tax_calculation_rate_title_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Tax Calculation Rate Title Id';
---
--- AUTO_INCREMENT for table `tax_calculation_rule`
---
-ALTER TABLE `tax_calculation_rule`
-  MODIFY `tax_calculation_rule_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Tax Calculation Rule Id',AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `tax_class`
---
-ALTER TABLE `tax_class`
-  MODIFY `class_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Class Id',AUTO_INCREMENT=9;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tax_calculation`
---
-ALTER TABLE `tax_calculation`
-  ADD CONSTRAINT `TAX_CALCULATION_CUSTOMER_TAX_CLASS_ID_TAX_CLASS_CLASS_ID` FOREIGN KEY (`customer_tax_class_id`) REFERENCES `tax_class` (`class_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `TAX_CALCULATION_PRODUCT_TAX_CLASS_ID_TAX_CLASS_CLASS_ID` FOREIGN KEY (`product_tax_class_id`) REFERENCES `tax_class` (`class_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `TAX_CALC_TAX_CALC_RATE_ID_TAX_CALC_RATE_TAX_CALC_RATE_ID` FOREIGN KEY (`tax_calculation_rate_id`) REFERENCES `tax_calculation_rate` (`tax_calculation_rate_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `TAX_CALC_TAX_CALC_RULE_ID_TAX_CALC_RULE_TAX_CALC_RULE_ID` FOREIGN KEY (`tax_calculation_rule_id`) REFERENCES `tax_calculation_rule` (`tax_calculation_rule_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `tax_calculation_rate_title`
---
-ALTER TABLE `tax_calculation_rate_title`
-  ADD CONSTRAINT `FK_37FB965F786AD5897BB3AE90470C42AB` FOREIGN KEY (`tax_calculation_rate_id`) REFERENCES `tax_calculation_rate` (`tax_calculation_rate_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `TAX_CALCULATION_RATE_TITLE_STORE_ID_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
