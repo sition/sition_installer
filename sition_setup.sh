@@ -24,7 +24,7 @@ php bin/magento module:enable Ho_nl_NL
 php bin/magento module:enable Semaio_ConfigImportExport
 php bin/magento sampledata:deploy
 php bin/magento setup:static-content:deploy
-php bin/magento setup:static-content:deploy de_DE
+php bin/magento setup:static-content:deploy de_DE nl_NL en_US
 
 
 crontab -l > sition_installer/oldcron.txt
@@ -36,6 +36,6 @@ n98-magerun2 db:import sition_installer/cms.sql
 n98-magerun2 db:import sition_installer/tax.sql
 mkdir -p config/store/base
 cp  sition_installer/20167103_sition.yaml config/store/base
-php bin/magento config:data:import conficrg/store base
+php bin/magento config:data:import config/store base
 n98-magerun2 cache:flush
 n98-magerun2 index:reindex
